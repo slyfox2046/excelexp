@@ -91,6 +91,6 @@
     where emp_id = #{empId,jdbcType=INTEGER}
   </update>
   <select id = "getAll" resultMap="BaseResultMap">
-    select * from tbl_emp limit 10
+    select * from tbl_emp
   </select>
 </mapper>
