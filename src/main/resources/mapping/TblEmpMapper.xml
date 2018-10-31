@@ -90,4 +90,8 @@
       d_id = #{dId,jdbcType=INTEGER}
     where emp_id = #{empId,jdbcType=INTEGER}
   </update>
+
+  <select id="findAllEmp" resultMap="BaseResultMap">
+    select * from tbl_emp
+  </select>
 </mapper>
