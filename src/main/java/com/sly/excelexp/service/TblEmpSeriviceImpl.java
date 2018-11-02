@@ -16,8 +16,7 @@ public class TblEmpSeriviceImpl implements TblEmpService {
 
     @Override
     public List<TblEmp> findAllEmp(int pageNum, int pageSize) {
-        System.out.println(pageNum);
-//        PageHelper.startPage(pageNum, pageSize);
+        PageHelper.startPage(pageNum,pageSize);
         return tblEmpMapper.findAllEmp();
     }
 }
