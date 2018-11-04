@@ -5,6 +5,8 @@ import com.sly.excelexp.model.TblEmp;
 import com.sly.excelexp.service.TblEmpService;
 import org.apache.poi.hssf.usermodel.*;
 import org.apache.poi.xssf.usermodel.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -19,10 +21,14 @@ public class TblEmpController {
     @Autowired
     private TblEmpService tblEmpService;
 
+    private Logger logger = LoggerFactory.getLogger(getClass());
+
     @ResponseBody
     @GetMapping(value = "/getall", produces = {"application/json;charset=UTF-8"})
     public Object getAll() {
         PageInfo pageInfo = new PageInfo<>(tblEmpService.findAllEmp(6, 5), 3);
+        logger.info("这是INFO信息");
+        logger.warn("这是WARN信息");
         return pageInfo;
     }
 
@@ -35,6 +41,8 @@ public class TblEmpController {
 
         //文件名称
         String fileName = "123" + ".xls";
+
+
 
         //新增数据行，设置单元格数据
         int rowNum = 1;
@@ -121,7 +129,6 @@ public class TblEmpController {
         response.flushBuffer();
         workbook.write(response.getOutputStream());
 
-//        return "下载excel成功";
 
 
     }
